@@ -1,0 +1,4 @@
+# BidBad
+
+## TODO
+### Everything
