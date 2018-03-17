@@ -6,6 +6,7 @@ Router.route('/', {name: 'jumbotron'});
 Router.route('/spaceRental', {name: 'spaceRental'});
 //Router.route('/', {name: ''});
 Router.route('/rental', {name: 'bidPage'});
+Router.route('/houses', {name: 'houseList'});
 
 var requireLogin = function() {
     if(!Meteor.user()) {

@@ -1,3 +1,14 @@
 <template name="houseList">
-
+	<div class="container">
+		<div class="row">
+			{{#each houses}}
+			<div class="col-md-4 houseimage">
+			<div class="thumbnail">	
+					<img src="{{url}}"/>
+					<h4 class="caption"> Hello </h4> 
+			</div>
+			</div>
+			{{/each}}
+		</div>
+	</div>
 </template>
