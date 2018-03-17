@@ -61,7 +61,7 @@ ul, ol {
   font-size: 12px;
   display: flex;
   justify-content: center;
-  align-items: center; 
+  align-items: center;
 }
 
 .top-nav a:hover {
@@ -96,7 +96,7 @@ ul, ol {
 }
 
 #nav-search-wrapper form input {
-  padding: 0px 10px 18px 52px;
+  padding: 20px 10px 18px 22px;
   width: 100%;
   border: none;
   outline: none;
