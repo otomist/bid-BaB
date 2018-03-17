@@ -3,7 +3,8 @@ Router.configure({
 });
 
 Router.route('/', {name: 'jumbotron'});
-Router.route('/rental', {name: 'space'});
+Router.route('/rental', {name: 'spaceRental'});
+//Router.route('/', {name: ''});
 
 var requireLogin = function() {
     if(!Meteor.user()) {
