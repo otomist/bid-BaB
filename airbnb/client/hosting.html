@@ -1,0 +1,34 @@
+<template name="makeListing">
+  <div class="container">
+  <div class="row">
+  <div class="rentalZone">
+    <h1 class="display-4"><b>Have a house to rent out?</b></h1>
+    <h1></h1>
+    
+    <form action="/action_page.php">
+      First name:<br>
+      <input type="text" name="firstname" value="first name">
+      <br>
+      public key:<br>
+      <input type="text" name="pubKey" value="ex: 0x7fC63F74caB2fe138d2eCD0d3191286A0Ff341E1">
+      <br><br>
+      Title for your post:<br>
+      <input type="text" name="posttitle" value="ex: couch for hackathons">
+      <br><br>
+
+      <!-- THIS IF FOR THE CHOOSE FILE BUTTON-->
+      <h3>upload some images of your house:</h3>
+
+      <input type="file" id="housingProfile">
+      <!--end choose file button-->
+      <br>
+      <p class="lead">
+      <a class="btn btn-primary btn-lg" href="#" role=button>Post house</a>
+      </p>
+      <!--<input type="submit" value="Submit">-->
+    </form> 
+    
+    </div>
+  </div>
+  </div>
+</template>

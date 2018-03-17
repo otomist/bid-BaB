@@ -4,7 +4,7 @@ Router.configure({
 
 Router.route('/', {name: 'jumbotron'});
 Router.route('/spaceRental', {name: 'spaceRental'});
-//Router.route('/', {name: ''});
+Router.route('/hosting', {name: 'makeListing'});
 Router.route('/rental', {name: 'bidPage'});
 Router.route('/houses', {name: 'houseList'});
 
