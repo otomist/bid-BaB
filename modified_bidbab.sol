@@ -14,7 +14,7 @@ contract bidbab {
     struct Bid {
         address placedBy;
         uint amount;
-        StartStopDate duration;
+      	StartStopDate duration;
     }
     
     struct Space {
@@ -40,7 +40,7 @@ contract bidbab {
     //     // uint[] memory stops;
     //     // (starts, stops) = getCalendar(_space);
     //     //StartStopDate storage booked;
-    //      StartStopDate otherBids = _space.bids;
+    //   	StartStopDate otherBids = _space.bids;
     //     //StartStopDate[] booked = b.calendar;
     //     for (uint i = 0; i< otherBids.length(); i++) {
     //       uint bookedStart = otherBids[i].fromDate;
@@ -88,14 +88,6 @@ contract bidbab {
         _space.bids.push(userBid);
     }
     
-    function makeSpace()
-    {
-        Space my_space;
-        my_space.listedBy = msg.sender;
-        my_space.startdate = now; //set via function
-        my_space.enddate = now;   
-    }
-        
     // //returns false if there is no other bids during that time
     // function makeBid(uint _start, uint _toDate, Space _space, uint _amount) private returns (bool)
     // {
@@ -112,5 +104,4 @@ contract bidbab {
     //     //   return false;
     //     // }
     // }
-    //set via function
 }
