@@ -1,0 +1,161 @@
+[
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "startyear",
+				"type": "uint16"
+			},
+			{
+				"name": "startmonth",
+				"type": "uint8"
+			},
+			{
+				"name": "startday",
+				"type": "uint8"
+			}
+		],
+		"name": "tts",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "startyear",
+				"type": "uint16"
+			},
+			{
+				"name": "startmonth",
+				"type": "uint8"
+			},
+			{
+				"name": "startday",
+				"type": "uint8"
+			},
+			{
+				"name": "endyear",
+				"type": "uint16"
+			},
+			{
+				"name": "endmonth",
+				"type": "uint8"
+			},
+			{
+				"name": "endday",
+				"type": "uint8"
+			},
+			{
+				"name": "lat",
+				"type": "uint256"
+			},
+			{
+				"name": "long",
+				"type": "uint256"
+			}
+		],
+		"name": "createListing",
+		"outputs": [
+			{
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "acceptedBids",
+		"outputs": [
+			{
+				"name": "placedBy",
+				"type": "address"
+			},
+			{
+				"name": "amount",
+				"type": "uint256"
+			},
+			{
+				"components": [
+					{
+						"name": "fromDate",
+						"type": "uint256"
+					},
+					{
+						"name": "toDate",
+						"type": "uint256"
+					}
+				],
+				"name": "duration",
+				"type": "tuple"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"name": "hostAddress",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"name": "hstar",
+				"type": "uint256"
+			}
+		],
+		"name": "HostRating",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"name": "userAddress",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"name": "ustar",
+				"type": "uint256"
+			}
+		],
+		"name": "UserRating",
+		"type": "event"
+	},
+	{
+		"constant": false,
+		"inputs": [],
+		"name": "closeBid",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": true,
+		"stateMutability": "payable",
+		"type": "function"
+	}
+]
