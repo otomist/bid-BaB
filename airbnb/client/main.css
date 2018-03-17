@@ -97,6 +97,7 @@ ul, ol {
   border: none;
   outline: none;
   color: #666;
+  background-color: #d2d2d2;
   font-size: 14px;
   box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -186,4 +187,8 @@ ul, ol {
   width: 100%;
   height: 100%;
   background-color: #008080;
+}
+
+.rentalZone {
+  background-color: #ff9900
 }
