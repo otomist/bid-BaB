@@ -23,3 +23,6 @@ chuikoff:accounts-ui-bootstrap-4
 accounts-password
 iron:router
 twbs:bootstrap
+qftgtr:bootstrap-daterangepicker
+ethereum:web3
+momentjs:moment
