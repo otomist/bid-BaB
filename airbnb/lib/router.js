@@ -13,4 +13,4 @@ var requireLogin = function() {
     }
 };
 
-Router.onBeforeAction(requireLogin, {only: 'jumbotron'});
+Router.onBeforeAction(requireLogin, {except: 'jumbotron'});
