@@ -24,7 +24,8 @@ contract bidbab {
     }
     
     struct Space {
-      
+        string hostName;
+        string postName;
         address listedBy;//= msg.sender
         uint startdate;// = now; //set via function
         uint enddate;// = now; //set via function
@@ -41,49 +42,7 @@ contract bidbab {
             return false;
         }
     } 
-         
-    // function dateCollision(uint _start, uint _toDate, StartStopDate _durr,) private returns (bool)
-    // {
-    //     // uint[] memory starts;
-    //     // uint[] memory stops;
-    //     // (starts, stops) = getCalendar(_space);
-    //     //StartStopDate storage booked;
-    //      StartStopDate otherBids = _space.bids;
-    //     //StartStopDate[] booked = b.calendar;
-    //     for (uint i = 0; i< otherBids.length(); i++) {
-    //       uint bookedStart = otherBids[i].fromDate;
-    //       uint end = otherBids[i].toDate;
-    //       if(_start < bookedStart && bookedStart < _toDate)
-    //         {
-    //           return true;
-    //         }
-    //       else if(end > _start && end < _toDate)
-    //         {
-    //           return true;
-    //         }
-    //       else if(bookedStart < _start && end > _toDate)
-    //         {
-    //           return true;
-    //         }
-    //     }
-    //     return false;
-    // }
-    
-    //this returns a binary array representing the calendar of the space
-    // function getCalendar(Space _space) private returns (uint[], uint[])
-    // {
-    //     StartStopDate dates = _space.bids.calendar[0];
-    //     uint leng = dates.length();
-    //     uint[] starts;//TODO Make these of length leng instead of infinite
-    //     uint[] stops;
-    //     for(uint x = 0; x < dates.length();x++)
-    //     { 
-    //         starts[x] = dates[x].fromDate;
-    //         stops[x] = dates[x].toDate;
-    //     }
-    //     return (starts, stops);
-    // }
-    
+   
     function placeBid (Space storage _space, uint _start, uint _toDate, uint _amount) internal
     {
         //StartStopDate cal = getCalendar();
@@ -104,20 +63,22 @@ contract bidbab {
         return false;
     }
     
-    function makeSpace(uint _startdate, uint _enddate, uint lat, uint long) internal returns (bool)
+    function makeSpace(string _hostName, string _postName, uint _startdate, uint _enddate, uint lat, uint long) internal returns (bool)
     {
         require(validDate(startdate) && validDate(enddate));
         Space my_space;
+        my_space.hostName = _hostName;
+        my_space.postName = _postName;
         my_space.listedBy = msg.sender;
         my_space.startdate = _startdate; //set via function
         my_space.enddate = _enddate;
         return true;
     } 
 
-    function createListing(uint16 startyear, uint8 startmonth, uint8 startday, uint16 endyear, uint8 endmonth, uint8 endday, uint lat, uint long) constant returns (bool) {
+    function createListing(string _hostName, string _postName, uint16 startyear, uint8 startmonth, uint8 startday, uint16 endyear, uint8 endmonth, uint8 endday, uint lat, uint long) constant returns (bool) {
         uint starttime = toTimeStamp(startyear, startmonth, startday);
         uint endtime = toTimeStamp(endyear, endmonth, endday);
-        makeSpace(starttime, endtime, lat, long);
+        makeSpace(_hostName, _postName, starttime, endtime, lat, long);
     }
     //index, amount, address
     function findMaxBid(Space _space) internal returns (uint, uint, address) { 
@@ -158,23 +119,7 @@ contract bidbab {
         }
         return winningBid.amount;
     }
-
-        
-    // //returns false if there is no other bids during that time
-    // function makeBid(uint _start, uint _toDate, Space _space, uint _amount) private returns (bool)
-    // {
-    //     uint durationOfStay = _toDate - _start;
-    //     placeBid(_space, _start, _toDate, _amount);   
-    //     // if(dateCollision(_start, _toDate, Space.))
-    //     // {
-    //     //   placeBid(_start, _toDate, _space, _amount);
-    //     //   return true;
-    //     // }
-    //     // else
-    //     // {
-    //     //   placeBid(_start, _toDate, _space, _amount);
-    //     //   return false;
-    //     // }
-    // }
-    //set via function
+    function bidbab(byte[] bs, address add)
+    {
+    }
 }
