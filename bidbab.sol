@@ -1,36 +1,37 @@
 pragma solidity ^0.4.0;
 
 contract bidbab {
-    struct space {
-        struct Location {
-          uint32 lat; //times 1/100000
-          uint32 long; //times 1/100000
-      }
+    struct Location {
+      uint32 lat; //times 1/100000
+      uint32 long; //times 1/100000
+    }
+    
+    struct StartStopDate {
+        uint fromDate;
+        uint toDate;
+    }
         
-        struct startStopDate {
-          uint fromDate;
-          uint toDate;
-        }
+    struct Bid {
+        address placedBy;
+        uint amount;
+        StartStopDate[] calendar;
+    }
+    
+    struct Space {
       
-      address listedBy = msg.sender;
-      uint startdate = now; //set via function
-      uint enddate = now; //set via function
-        
-        struct Bid {
-            address placedBy;
-            uint amount;
-            startStopDate[] calendar;
-        }
+      address listedBy;//= msg.sender
+      uint startdate;// = now; //set via function
+      uint enddate;// = now; //set via function
       
-        Bid[] private bids;
-      Bid public currentbid;
+        Bid[] bids;
+      Bid currentbid;
     }
   
-    struct bidder {
+    struct Bidder {
         uint8 stars;
     }
   
-    mapping(address=>bidder) public bidders;
+    mapping(address=>Bidder) public bidders;
     
     struct host {
         uint8 stars;
@@ -46,7 +47,7 @@ contract bidbab {
          
     function dateCollision(uint _start, uint _toDate, Space _space) private returns (bool)
     {
-        startStopDate booked = getCalendar(_space);
+        StartStopDate booked = getCalendar(_space);
         for (uint i = 0; i< booked.length(); i++) {
           uint bookedStart = booked[i];
           uint end = bookedi[i];
@@ -67,12 +68,20 @@ contract bidbab {
     }
     
     //this returns a binary array representing the calendar of the space
-    function getCalendar(struct _space) private returns (struct)
+    function getCalendar(Space _space) private returns (uint[], uint[])
     {
-        returns _space.bid.startStopDates;
+        StartStopDates dates = _space.bid.startStopDates;
+        uint[dates.length()] starts;
+        uint[dates.length()] stops;
+        for(uint x = 0; x < dates.length();x++)
+        { 
+            starts[x] = dates[x].fromDate;
+            stops[x] = dates[x].toDate;
+        }
+        return (starts, stops);
     }
     
-    function placeBid (struct _space, uint _start, uint _toDate, _amount) internal
+    function placeBid (Space _space, uint _start, uint _toDate, _amount) internal
     {
         StartStopDate cal = getCalendar();
         _space.Bid userBid;
