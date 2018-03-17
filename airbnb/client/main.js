@@ -10,7 +10,11 @@ var bytecode = "6060604052341561000f57600080fd5b610ce58061001e6000396000f3006060
 /*import { Template } from 'meteor/templating';
 import { ReactiveVar } from 'meteor/reactive-var';
 
+<<<<<<< HEAD
 
+=======
+import './main.html';
+>>>>>>> 57b765a37cc686f7f12dfcc840204957c2b8c76c
 Template.hello.onCreated(function helloOnCreated() {
   // counter starts at 0
   this.counter = new ReactiveVar(0);
