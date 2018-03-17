@@ -19,12 +19,12 @@ contract bidbab {
     
     struct Space {
       
-      address listedBy;//= msg.sender
-      uint startdate;// = now; //set via function
-      uint enddate;// = now; //set via function
-      
+        address listedBy;//= msg.sender
+        uint startdate;// = now; //set via function
+        uint enddate;// = now; //set via function
+        
         Bid[] bids;
-      Bid currentbid;
+        Bid currentbid;
     }
   
     struct Bidder {
@@ -54,8 +54,8 @@ contract bidbab {
         StartStopDate[] memory booked = _space.currentbid.calendar;
         //StartStopDate[] booked = b.calendar;
         for (uint i = 0; i< booked.length; i++) {
-          uint bookedStart = booked[i];
-          uint end = booked[i];
+          uint bookedStart = booked[i].fromDate;
+          uint end = booked[i].toDate;
           if(_start < bookedStart && bookedStart < _toDate)
             {
               return true;
@@ -75,7 +75,7 @@ contract bidbab {
     //this returns a binary array representing the calendar of the space
     function getCalendar(Space _space) private returns (uint[], uint[])
     {
-        StartStopDate storage dates = _space.bid.startStopDates;
+        StartStopDate storage dates = _space.bids.calendar[0];
         uint leng = dates.length();
         uint[] storage starts;//TODO Make these of length leng instead of infinite
         uint[] storage stops;
