@@ -1,0 +1,23 @@
+<template name="layout" >
+    <div class="top-nav">
+        <a href="index.html" class="logo">
+            <img src="https://i.imgur.com/bBHUGae.png" alt="Bid-Bab" />
+        </a>
+        <ul>
+            <a class="active" href="#home">Home</a>
+            <a class="Sign-up" href="#Sign-up">Sign-up</a>
+            <a href="#homes">Homes</a>
+            {{> loginButtons}}
+            <div id="nav-search-wrapper">
+                <form method="GET" action="index.html">
+                    <div class="search">
+                        <input type="text" name="search" id="nav-search" placeholder="Search">
+                    </div>
+                </form>
+            </div>
+        </ul>
+    </div>
+    <div id="main" >
+        {{> yield}}
+    </div>
+</template>
