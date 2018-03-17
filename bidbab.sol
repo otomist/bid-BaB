@@ -47,10 +47,15 @@ contract bidbab {
          
     function dateCollision(uint _start, uint _toDate, Space _space) private returns (bool)
     {
-        StartStopDate booked = getCalendar(_space);
-        for (uint i = 0; i< booked.length(); i++) {
+        // uint[] memory starts;
+        // uint[] memory stops;
+        // (starts, stops) = getCalendar(_space);
+        //StartStopDate storage booked;
+        StartStopDate[] memory booked = _space.currentbid.calendar;
+        //StartStopDate[] booked = b.calendar;
+        for (uint i = 0; i< booked.length; i++) {
           uint bookedStart = booked[i];
-          uint end = bookedi[i];
+          uint end = booked[i];
           if(_start < bookedStart && bookedStart < _toDate)
             {
               return true;
@@ -70,9 +75,10 @@ contract bidbab {
     //this returns a binary array representing the calendar of the space
     function getCalendar(Space _space) private returns (uint[], uint[])
     {
-        StartStopDates dates = _space.bid.startStopDates;
-        uint[dates.length()] starts;
-        uint[dates.length()] stops;
+        StartStopDate storage dates = _space.bid.startStopDates;
+        uint leng = dates.length();
+        uint[] storage starts;//TODO Make these of length leng instead of infinite
+        uint[] storage stops;
         for(uint x = 0; x < dates.length();x++)
         { 
             starts[x] = dates[x].fromDate;
@@ -81,10 +87,10 @@ contract bidbab {
         return (starts, stops);
     }
     
-    function placeBid (Space _space, uint _start, uint _toDate, _amount) internal
+    function placeBid (Space _space, uint _start, uint _toDate, uint _amount) internal
     {
-        StartStopDate cal = getCalendar();
-        _space.Bid userBid;
+        StartStopDate storage cal = getCalendar();
+        Bid storage userBid;
         userBid.placedBy = msg.sender;
         userBid.amount = _amount;
         userBid.startStopDate = cal;
@@ -92,7 +98,7 @@ contract bidbab {
     }
     
     //returns false if there is no other bids during that time
-    function Bid(uint _start, uint _toDate, Space _space, _amount) private returns (bool)
+    function makeBid(uint _start, uint _toDate, Space _space, uint _amount) private returns (bool)
     {
         uint durationOfStay = _toDate - _start;
         if(dateCollision(_start, _toDate, _space))
